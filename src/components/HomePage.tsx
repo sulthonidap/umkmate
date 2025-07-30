@@ -5,6 +5,7 @@ import { useAI } from '../context/AIContext';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 import AIService from '../services/aiService';
+import Footer from './Footer';
 
 const HomePage = () => {
   const [product, setProduct] = useState('');
@@ -64,7 +65,7 @@ const HomePage = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="bg-gradient-to-r from-mint-500 to-sky-500 p-2 rounded-xl">
-                <Globe className="w-6 h-6 text-white" />
+                <TrendingUp className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-mint-600 to-sky-600 bg-clip-text text-transparent">
@@ -104,7 +105,8 @@ const HomePage = () => {
 
           {/* Search Form */}
           <form onSubmit={handleSubmit} className="mb-8">
-            <div className="relative group">
+            {/* Desktop version - button inside input */}
+            <div className="relative group hidden sm:block">
               <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
                 <Search className="w-6 h-6 text-gray-400 group-focus-within:text-mint-500 transition-colors" />
               </div>
@@ -125,7 +127,39 @@ const HomePage = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>{t('home.search.analyzing')}</span>
+                    <span>{t('tunggu sebentar ...')}</span>
+                  </>
+                ) : (
+                  <span>{t('home.search.button')}</span>
+                )}
+              </button>
+            </div>
+
+            {/* Mobile version - button below input */}
+            <div className="block sm:hidden">
+              <div className="relative group mb-4">
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                  <Search className="w-5 h-5 text-gray-400 group-focus-within:text-mint-500 transition-colors" />
+                </div>
+                <input
+                  type="text"
+                  value={product}
+                  onChange={(e) => setProduct(e.target.value)}
+                  placeholder={t('home.search.placeholder')}
+                  className="w-full pl-12 pr-4 py-4 text-base border-2 border-gray-200 rounded-xl focus:border-mint-500 focus:ring-4 focus:ring-mint-100 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl"
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-4 bg-gradient-to-r from-mint-500 to-sky-500 text-white font-semibold rounded-xl hover:from-mint-600 hover:to-sky-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              >
+                {isLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>{t('tunggu sebentar ...')}</span>
                   </>
                 ) : (
                   <span>{t('home.search.button')}</span>
@@ -194,6 +228,9 @@ const HomePage = () => {
           </div>
         </div>
       </main>
+      
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

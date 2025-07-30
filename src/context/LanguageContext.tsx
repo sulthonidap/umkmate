@@ -22,8 +22,8 @@ export const useLanguage = () => {
 const translations = {
   id: {
     // Header
-    'app.title': 'UMKM Mate',
-    'app.subtitle': 'Platform Peluang Ekspor AI',
+    'app.title': 'UMKMate!',
+    'app.subtitle': 'Bantu kamu ekspor dari nol',
     'language.switch': 'Switch Language',
     
     // HomePage
