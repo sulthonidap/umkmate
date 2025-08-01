@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Globe, TrendingUp, FileText, Award, MapPin, DollarSign, Users, Calendar, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Globe, FileText, Award, MapPin, DollarSign, Users, Calendar, AlertCircle } from 'lucide-react';
+import CustomIcon from './CustomIcon';
 import { useAI } from '../context/AIContext';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
@@ -176,7 +177,7 @@ const ResultsPage = () => {
         <section className="mb-12">
           <div className="flex items-center space-x-3 mb-6">
             <div className="bg-gradient-to-r from-sky-500 to-sky-400 p-2 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-white" />
+              <CustomIcon className="w-5 h-5" size={20} />
             </div>
             <h3 className="text-2xl font-bold text-gray-800">{t('results.trends.title')}</h3>
           </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Globe, TrendingUp, Award, Sparkles, Loader2 } from 'lucide-react';
+import { Search, Globe, Award, Sparkles, Loader2, TrendingUp } from 'lucide-react';
+import CustomIcon from './CustomIcon';
 import { useAI } from '../context/AIContext';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
@@ -31,7 +32,7 @@ const HomePage = () => {
 
   const getAISuggestions = async (input: string) => {
     if (input.length < 2) return;
-    
+
     setIsLoadingSuggestions(true);
     try {
       const aiService = AIService.getInstance();
@@ -64,8 +65,8 @@ const HomePage = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-mint-500 to-sky-500 p-2 rounded-xl">
-                <TrendingUp className="w-6 h-6 text-white" />
+              <div className="bg-gradient-to-r from-mint-500 to-sky-500 p-1 rounded-xl">
+                <CustomIcon className="w-6 h-6" size={24} />
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-mint-600 to-sky-600 bg-clip-text text-transparent">
@@ -88,16 +89,16 @@ const HomePage = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <Sparkles className="w-24 h-24 text-mint-200 animate-pulse-soft" />
               </div>
-              <div className="relative bg-gradient-to-r from-mint-500 to-sky-500 p-4 rounded-2xl mx-auto w-32 h-32 flex items-center justify-center animate-float">
-                <TrendingUp className="w-16 h-16 text-white" />
+              <div className="relative bg-gradient-to-r from-mint-500 to-sky-500  rounded-xl mx-auto w-32 h-32 flex items-center justify-center animate-float">
+                <CustomIcon className="w-16 h-16" size={98} />
               </div>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
               {t('home.hero.title')}
               <span className="bg-gradient-to-r from-mint-500 to-sky-500 bg-clip-text text-transparent"> {t('home.hero.title.highlight')}</span>
             </h2>
-            
+
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               {t('home.hero.subtitle')}
             </p>
@@ -211,9 +212,11 @@ const HomePage = () => {
             </div>
 
             <div className="bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+
               <div className="bg-gradient-to-r from-sky-500 to-sky-400 p-3 rounded-xl w-fit mb-4 mx-auto">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
+
               <h3 className="font-semibold text-gray-800 mb-2">{t('home.features.trends.title')}</h3>
               <p className="text-gray-600 text-sm">{t('home.features.trends.desc')}</p>
             </div>
@@ -228,7 +231,7 @@ const HomePage = () => {
           </div>
         </div>
       </main>
-      
+
       {/* Footer */}
       <Footer />
     </div>

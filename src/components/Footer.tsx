@@ -1,5 +1,6 @@
 import React from 'react';
-import { Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin, ExternalLink, TrendingUp } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import CustomIcon from './CustomIcon';
 
 const Footer = () => {
   return (
@@ -12,8 +13,8 @@ const Footer = () => {
           {/* Brand Identity Section */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center">
-              <TrendingUp className="w-6 h-6 text-white" />
+              <div className=" w-10 h-10 rounded-full flex items-center justify-center">
+                <CustomIcon className="w-6 h-6" size={24} />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">TemanEkspor</h3>

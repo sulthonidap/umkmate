@@ -1,5 +1,6 @@
 import React from 'react';
-import { Loader2, Globe, TrendingUp, Award } from 'lucide-react';
+import { Loader2, Globe, Award } from 'lucide-react';
+import CustomIcon from './CustomIcon';
 import { useLanguage } from '../context/LanguageContext';
 
 interface LoadingSpinnerProps {
@@ -25,7 +26,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
               <Globe className="w-8 h-8 text-white" />
             </div>
             <div className="bg-gradient-to-r from-sky-500 to-sky-400 p-4 rounded-xl animate-bounce" style={{ animationDelay: '0.2s' }}>
-              <TrendingUp className="w-8 h-8 text-white" />
+              <CustomIcon className="w-8 h-8" size={32} />
             </div>
             <div className="bg-gradient-to-r from-mint-500 to-sky-500 p-4 rounded-xl animate-bounce" style={{ animationDelay: '0.4s' }}>
               <Award className="w-8 h-8 text-white" />
