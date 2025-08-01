@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 
 const FloatingConsultant = () => {
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about export opportunities through UMKM Mate.");
+    const message = encodeURIComponent("Hi! I'm interested in learning more about export opportunities through TemanEkspor.");
     const whatsappUrl = `https://wa.me/1234567890?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };

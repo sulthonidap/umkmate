@@ -1,4 +1,4 @@
-# UMKM Mate - AI Export Opportunities Platform
+# TemanEkspor - AI Export Opportunities Platform
 
 Aplikasi web yang menggunakan AI untuk membantu UMKM Indonesia menemukan peluang ekspor ke pasar global.
 

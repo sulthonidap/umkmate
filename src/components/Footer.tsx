@@ -16,11 +16,11 @@ const Footer = () => {
               <TrendingUp className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">UMKMate!</h3>
+                <h3 className="text-xl font-bold text-white">TemanEkspor</h3>
               </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-            UMKMate hadir untuk membantu UMKM pemula yang ingin melakukan ekspor dari dasar.
+            TemanEkspor hadir untuk membantu UMKM pemula yang ingin melakukan ekspor dari dasar.
             </p>
           </div>
 
@@ -46,10 +46,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-green-400 flex-shrink-0" />
                 <a 
-                  href="mailto:umkmate@eksporina.com" 
+                  href="mailto:TemanEkspor@eksporina.com" 
                   className="text-gray-300 text-sm hover:text-white transition-colors"
                 >
-                  umkmate@eksporina.com
+                  TemanEkspor@eksporina.com
                 </a>
               </div>
             </div>
@@ -62,23 +62,48 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <ExternalLink className="w-4 h-4 text-green-400 flex-shrink-0" />
                 <a 
-                  href="https://matebot.go.id" 
+                  href="https://lamansitu.kemendag.go.id/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-300 text-sm hover:text-white transition-colors"
                 >
-                  Pusat Bantuan
+                  LamanSitu Kemendag 
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-green-400 flex-shrink-0" />
+                <ExternalLink className="w-4 h-4 text-green-400 flex-shrink-0" />
                 <a 
-                  href="mailto:umkmate@eksporina.com" 
+                  href="https://exim.kemendag.go.id/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   className="text-gray-300 text-sm hover:text-white transition-colors"
                 >
-                  Bantuan
+                  Exim Kemendag
                 </a>
               </div>
+              <div className="flex items-center space-x-3">
+                <ExternalLink className="w-4 h-4 text-green-400 flex-shrink-0" />
+                <a 
+                  href="https://www.inaexport.id" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 text-sm hover:text-white transition-colors"
+                >
+                  InaExport
+                </a>
+              </div>
+              <div className="flex items-center space-x-3">
+                <ExternalLink className="w-4 h-4 text-green-400 flex-shrink-0" />
+                <a 
+                  href="https://www.indonesiaeximbank.go.id/id" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 text-sm hover:text-white transition-colors"
+                >
+                  Indonesia Exim Bank
+                </a>
+              </div>
+              
             </div>
           </div>
 
@@ -108,7 +133,7 @@ const Footer = () => {
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-gray-300 text-sm">
-                © 2025 UMKMate. Hak Cipta Dilindungi.
+                © 2025 TemanEkspor. Hak Cipta Dilindungi.
               </p>
             </div>
 

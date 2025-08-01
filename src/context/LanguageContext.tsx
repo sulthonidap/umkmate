@@ -22,7 +22,7 @@ export const useLanguage = () => {
 const translations = {
   id: {
     // Header
-    'app.title': 'UMKMate!',
+    'app.title': 'TemanEkspor',
     'app.subtitle': 'Bantu kamu ekspor dari nol',
     'language.switch': 'Switch Language',
     
@@ -98,7 +98,7 @@ const translations = {
   },
   en: {
     // Header
-    'app.title': 'UMKM Mate',
+    'app.title': 'TemanEkspor',
     'app.subtitle': 'AI Export Opportunities Platform',
     'language.switch': 'Switch Language',
     
