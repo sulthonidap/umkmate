@@ -424,6 +424,96 @@ export class AIService {
         : `Market analysis for ${product} in ${country} shows promising opportunities. Focus on quality standards and proper documentation for successful market entry.`;
     }
   }
+
+  async chatWithAI(userMessage: string, language: 'id' | 'en' = 'en'): Promise<string> {
+    // If fallback is enabled, return basic responses
+    if (this.useFallback) {
+      return this.getFallbackChatResponse(userMessage, language);
+    }
+
+    const isIndonesian = language === 'id';
+    
+    try {
+      const systemPrompt = isIndonesian ? `
+        Anda adalah AI Assistant TemanEkspor, asisten yang ahli dalam membantu UMKM Indonesia dengan pertanyaan seputar ekspor, analisis pasar, dan peluang bisnis internasional.
+
+        Fokus keahlian Anda:
+        1. Analisis peluang ekspor untuk produk Indonesia
+        2. Informasi pasar internasional dan tren perdagangan
+        3. Persyaratan regulasi dan dokumentasi ekspor
+        4. Strategi penetrasi pasar dan pemasaran
+        5. Sumber daya dan bantuan untuk UMKM eksportir
+
+        Berikan jawaban yang:
+        - Informatif dan praktis untuk UMKM
+        - Berdasarkan data dan tren terkini
+        - Mudah dipahami dan actionable
+        - Mengarahkan ke fitur analisis produk jika diperlukan
+        - Ramah dan mendukung
+        - Gunakan format ***Judul:** untuk setiap bagian penting
+        - Berikan struktur yang jelas dengan paragraf terpisah
+
+        Jika pertanyaan tidak terkait ekspor/bisnis, arahkan kembali ke topik ekspor dan peluang bisnis Indonesia.
+      ` : `
+        You are TemanEkspor AI Assistant, an expert assistant helping Indonesian SMEs with export questions, market analysis, and international business opportunities.
+
+        Your expertise focuses on:
+        1. Export opportunity analysis for Indonesian products
+        2. International market information and trade trends
+        3. Export regulations and documentation requirements
+        4. Market penetration and marketing strategies
+        5. Resources and assistance for SME exporters
+
+        Provide answers that are:
+        - Informative and practical for SMEs
+        - Based on current data and trends
+        - Easy to understand and actionable
+        - Direct to product analysis features when needed
+        - Friendly and supportive
+        - Use format ***Title:** for each important section
+        - Provide clear structure with separated paragraphs
+
+        If questions are not related to export/business, redirect back to export and Indonesian business opportunities.
+      `;
+
+      const prompt = `${systemPrompt}
+
+User: ${userMessage}
+
+Assistant:`;
+
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
+      
+    } catch (error: any) {
+      console.error('AI Chat Error:', error);
+      return this.getFallbackChatResponse(userMessage, language);
+    }
+  }
+
+  private getFallbackChatResponse(userMessage: string, language: 'id' | 'en'): string {
+    const isIndonesian = language === 'id';
+    const message = userMessage.toLowerCase();
+    
+    if (message.includes('ekspor') || message.includes('export')) {
+      return isIndonesian 
+        ? 'Untuk informasi ekspor yang lebih detail, silakan gunakan fitur analisis produk di halaman utama. Saya bisa membantu menjelaskan proses ekspor dan persyaratan yang diperlukan.'
+        : 'For detailed export information, please use the product analysis feature on the main page. I can help explain the export process and required requirements.';
+    } else if (message.includes('produk') || message.includes('product')) {
+      return isIndonesian
+        ? 'Produk Indonesia memiliki potensi ekspor yang besar. Beberapa produk unggulan termasuk kerajinan tangan, makanan tradisional, dan produk tekstil. Apakah ada produk spesifik yang ingin Anda ekspor?'
+        : 'Indonesian products have great export potential. Some leading products include handicrafts, traditional foods, and textile products. Is there a specific product you want to export?';
+    } else if (message.includes('pasar') || message.includes('market')) {
+      return isIndonesian
+        ? 'Pasar ekspor utama Indonesia meliputi Amerika Serikat, Jepang, dan negara-negara Eropa. Setiap pasar memiliki karakteristik dan persyaratan yang berbeda. Pasar mana yang ingin Anda ketahui lebih lanjut?'
+        : 'Indonesia\'s main export markets include the United States, Japan, and European countries. Each market has different characteristics and requirements. Which market would you like to know more about?';
+    } else {
+      return isIndonesian
+        ? 'Terima kasih atas pertanyaannya! Saya siap membantu Anda dengan informasi seputar ekspor, analisis pasar, dan peluang bisnis. Silakan ajukan pertanyaan yang lebih spesifik atau gunakan fitur analisis produk untuk informasi yang lebih detail.'
+        : 'Thank you for your question! I\'m ready to help you with export information, market analysis, and business opportunities. Please ask a more specific question or use the product analysis feature for more detailed information.';
+    }
+  }
 }
 
 export default AIService; 

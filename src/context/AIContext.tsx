@@ -8,6 +8,7 @@ interface AIContextType {
   analysis: ExportAnalysis | null;
   analyzeProduct: (product: string, language: 'id' | 'en') => Promise<void>;
   clearAnalysis: () => void;
+  chatWithAI: (message: string, language: 'id' | 'en') => Promise<string>;
 }
 
 const AIContext = createContext<AIContextType | undefined>(undefined);
@@ -53,8 +54,19 @@ export const AIProvider: React.FC<AIProviderProps> = ({ children }) => {
     setError(null);
   };
 
+  const chatWithAI = async (message: string, language: 'id' | 'en'): Promise<string> => {
+    try {
+      const aiService = AIService.getInstance();
+      const response = await aiService.chatWithAI(message, language);
+      return response;
+    } catch (err: any) {
+      console.error('Chat error:', err);
+      throw new Error(err.message || 'Terjadi kesalahan saat chat dengan AI');
+    }
+  };
+
   return (
-    <AIContext.Provider value={{ isLoading, error, analysis, analyzeProduct, clearAnalysis }}>
+    <AIContext.Provider value={{ isLoading, error, analysis, analyzeProduct, clearAnalysis, chatWithAI }}>
       {children}
     </AIContext.Provider>
   );
